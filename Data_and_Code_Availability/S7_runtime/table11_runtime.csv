@@ -1,0 +1,10 @@
+operation,configuration,repetitions,median_us,p95_us,p99_us
+Memory revalidation,r_m=1,12000,0.18,0.191,0.22010000000000218
+Memory revalidation,r_m=8,12000,0.521,0.541,0.741
+Memory revalidation,r_m=32,12000,1.642,1.663,2.003
+Memory revalidation,r_m=128,5000,6.129,6.209,16.739000000000065
+Memory revalidation,r_m=512,2000,24.136,31.059999999999995,78.3116
+Memory revalidation,r_m=2048,800,96.125,143.30264999999991,267.5677299999999
+Atomic reservation,single operation,30000,0.24,0.261,0.391
+Protected commit,single operation,30000,0.22,0.291,0.44
+Reservation + protected commit,single operation,30000,0.471,0.711,1.022

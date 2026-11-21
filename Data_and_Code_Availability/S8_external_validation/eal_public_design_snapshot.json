@@ -1,0 +1,72 @@
+{
+  "snapshot_version": "eal_public_design_snapshot_v1",
+  "inspected_date": "2026-09-18",
+  "note": "Design metadata transcribed from the current public EAL-Bench GitHub repository. This snapshot is for adapter/preflight validation only and is not a substitute for the repository's hash-verified manifests or omitted raw JSONL trials.",
+  "common": {
+    "paper_result_manifest_schema": "paper_result_manifest_v1",
+    "corpus_version": "benchmark_v1",
+    "presentation_version": "naturalistic_v1",
+    "conditions": [
+      "one_shot_text",
+      "incremental_text",
+      "one_shot_typed",
+      "incremental_typed"
+    ],
+    "writer_targets": [
+      "nemotron_3_ultra_baseten",
+      "kimi_baseten",
+      "glm_5_2_baseten",
+      "grok_4_3_openrouter",
+      "qwen_plus_0728_openrouter"
+    ],
+    "executor_targets": [
+      "gptoss_baseten",
+      "deepseek_baseten"
+    ],
+    "selection": "Five paper writers; generated_final ordinary trials; all outcomes retained.",
+    "metric": "exact_request_unauthorized_submission",
+    "native_field_mapping": {
+      "request_authorized": "oracle_authorized",
+      "requested_action_taken": "external_effect_executed_for_requested_action",
+      "authorized_use": "ACR numerator",
+      "authorized_trials": "ACR denominator",
+      "unauthorized_submissions": "UER numerator",
+      "unauthorized_trials": "UER denominator"
+    }
+  },
+  "domains": {
+    "procurement": {
+      "release_id": "procurement_v1",
+      "case_count": 12,
+      "seeds": [
+        20260719,
+        20260821,
+        20260822
+      ],
+      "authorized_trials_per_writer_condition": 72,
+      "release_sha256": "e031279388062a915416babd4fe9aa6502f88129f8ad5cc17118bb3d25f0f613"
+    },
+    "cybersecurity": {
+      "release_id": "cybersecurity_v1",
+      "case_count": 16,
+      "seeds": [
+        20260812,
+        20260821,
+        20260822
+      ],
+      "authorized_trials_per_writer_condition": 128,
+      "release_sha256": "a6de16240f71c24bcc999cd4e06dbc9d12608c2087b38b64b1935296463aa6a6"
+    },
+    "finance": {
+      "release_id": "finance_redesign_v1",
+      "case_count": 8,
+      "seeds": [
+        20260816,
+        20260821,
+        20260822
+      ],
+      "authorized_trials_per_writer_condition": 64,
+      "release_sha256": "a19b0bb5ee2f6d23a064e9dfe041b2ff90866b656bc78f32c9ee5d981d9d55ce"
+    }
+  }
+}

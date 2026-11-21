@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "native_attack_success_not_equal_external_effect": true,
+  "no_trace_excluded_from_primary_uer": true,
+  "explicit_trace_required": true,
+  "synthetic_uer": 0.5
+}

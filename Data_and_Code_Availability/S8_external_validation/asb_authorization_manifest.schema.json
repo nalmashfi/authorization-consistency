@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASB Authorization Mapping Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "asb_authz_manifest_v1"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "agent_name",
+          "task_id",
+          "legitimate_consequential_tools",
+          "authorization_evaluable"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "agent_name": {
+            "type": "string"
+          },
+          "task_id": {
+            "type": "string"
+          },
+          "attack_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attacker_tool": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legitimate_consequential_tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "authorization_evaluable": {
+            "type": "boolean"
+          },
+          "exclusion_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "external_effect_trace_required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

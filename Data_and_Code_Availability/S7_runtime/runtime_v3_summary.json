@@ -1,0 +1,187 @@
+{
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "cpu_count": 5
+  },
+  "table10": [
+    {
+      "V": 100,
+      "Lambda": 96,
+      "repetitions": 3000,
+      "support_median_us": 2.413,
+      "support_p95_us": 2.5439999999999996,
+      "support_p99_us": 3.095099999999998,
+      "complete_median_us": 6.009,
+      "complete_p95_us": 6.32,
+      "complete_p99_us": 17.570499999999917,
+      "median_increment_us": 3.5960000000000005,
+      "per_invocation_total_lt_support": 0,
+      "successful_paths": 3000
+    },
+    {
+      "V": 1000,
+      "Lambda": 996,
+      "repetitions": 1800,
+      "support_median_us": 20.581,
+      "support_p95_us": 25.068500000000004,
+      "support_p99_us": 48.915319999999994,
+      "complete_median_us": 41.853,
+      "complete_p95_us": 57.697,
+      "complete_p99_us": 99.71980999999998,
+      "median_increment_us": 21.272000000000002,
+      "per_invocation_total_lt_support": 0,
+      "successful_paths": 1800
+    },
+    {
+      "V": 10000,
+      "Lambda": 9987,
+      "repetitions": 500,
+      "support_median_us": 206.411,
+      "support_p95_us": 271.3216999999999,
+      "support_p99_us": 361.90712,
+      "complete_median_us": 426.303,
+      "complete_p95_us": 522.9781999999999,
+      "complete_p99_us": 709.3532999999991,
+      "median_increment_us": 219.892,
+      "per_invocation_total_lt_support": 0,
+      "successful_paths": 500
+    },
+    {
+      "V": 50000,
+      "Lambda": 49947,
+      "repetitions": 140,
+      "support_median_us": 1063.3719999999998,
+      "support_p95_us": 1261.5132,
+      "support_p99_us": 1457.978139999997,
+      "complete_median_us": 2133.1549999999997,
+      "complete_p95_us": 2432.163,
+      "complete_p99_us": 2653.305879999998,
+      "median_increment_us": 1069.783,
+      "per_invocation_total_lt_support": 0,
+      "successful_paths": 140
+    }
+  ],
+  "table11": [
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=1",
+      "repetitions": 12000,
+      "median_us": 0.18,
+      "p95_us": 0.191,
+      "p99_us": 0.22010000000000218
+    },
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=8",
+      "repetitions": 12000,
+      "median_us": 0.521,
+      "p95_us": 0.541,
+      "p99_us": 0.741
+    },
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=32",
+      "repetitions": 12000,
+      "median_us": 1.642,
+      "p95_us": 1.663,
+      "p99_us": 2.003
+    },
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=128",
+      "repetitions": 5000,
+      "median_us": 6.129,
+      "p95_us": 6.209,
+      "p99_us": 16.739000000000065
+    },
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=512",
+      "repetitions": 2000,
+      "median_us": 24.136,
+      "p95_us": 31.059999999999995,
+      "p99_us": 78.3116
+    },
+    {
+      "operation": "Memory revalidation",
+      "configuration": "r_m=2048",
+      "repetitions": 800,
+      "median_us": 96.125,
+      "p95_us": 143.30264999999991,
+      "p99_us": 267.5677299999999
+    },
+    {
+      "operation": "Atomic reservation",
+      "configuration": "single operation",
+      "repetitions": 30000,
+      "median_us": 0.24,
+      "p95_us": 0.261,
+      "p99_us": 0.391
+    },
+    {
+      "operation": "Protected commit",
+      "configuration": "single operation",
+      "repetitions": 30000,
+      "median_us": 0.22,
+      "p95_us": 0.291,
+      "p99_us": 0.44
+    },
+    {
+      "operation": "Reservation + protected commit",
+      "configuration": "single operation",
+      "repetitions": 30000,
+      "median_us": 0.471,
+      "p95_us": 0.711,
+      "p99_us": 1.022
+    }
+  ],
+  "memory_fit": {
+    "slope_us_per_ref": 0.0468685231581528,
+    "intercept_us": 0.13813338356683857,
+    "r2": 0.9999999753988104
+  },
+  "concurrency": [
+    {
+      "concurrency": 1,
+      "operations": 3000,
+      "median_us": 0.531,
+      "p95_us": 0.781,
+      "p99_us": 0.9913099999999927,
+      "throughput_ops_s": 1409279.0691993602
+    },
+    {
+      "concurrency": 2,
+      "operations": 6000,
+      "median_us": 0.541,
+      "p95_us": 0.861,
+      "p99_us": 1.142,
+      "throughput_ops_s": 1249279.8422242843
+    },
+    {
+      "concurrency": 4,
+      "operations": 12000,
+      "median_us": 0.531,
+      "p95_us": 1.092,
+      "p99_us": 1.793,
+      "throughput_ops_s": 1017450.8937924557
+    },
+    {
+      "concurrency": 8,
+      "operations": 24000,
+      "median_us": 0.431,
+      "p95_us": 0.712,
+      "p99_us": 1.662,
+      "throughput_ops_s": 1455671.2618771403
+    },
+    {
+      "concurrency": 16,
+      "operations": 48000,
+      "median_us": 0.501,
+      "p95_us": 0.811,
+      "p99_us": 1.813,
+      "throughput_ops_s": 1387574.9886717512
+    }
+  ],
+  "note": "All values in v3 were measured in the same current execution environment. Table 10 uses nested instrumentation."
+}

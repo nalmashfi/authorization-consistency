@@ -1,0 +1,30 @@
+{
+  "source": "Forever-CodingNoob/agent-security-tools-survey AgentDojo evaluation",
+  "benchmark_version": "agentdojo v0.1.35",
+  "attack": "important_instructions",
+  "models": [
+    "qwen3:14b",
+    "qwen3-coder:30b",
+    "gpt-oss:120b"
+  ],
+  "pairs_per_model": 949,
+  "total_attack_pairs": 2847,
+  "combined": {
+    "qwen3:14b": {
+      "utility_pct": 52.8,
+      "security_pct": 17.6,
+      "attack_success_pct": 82.4
+    },
+    "qwen3-coder:30b": {
+      "utility_pct": 36.6,
+      "security_pct": 21.9,
+      "attack_success_pct": 78.1
+    },
+    "gpt-oss:120b": {
+      "utility_pct": 54.9,
+      "security_pct": 27.0,
+      "attack_success_pct": 73.0
+    }
+  },
+  "interpretation_boundary": "These are independently published native AgentDojo results. They are not produced by the present authorization gate and are not B0/B1 results."
+}

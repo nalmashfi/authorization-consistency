@@ -1,0 +1,50 @@
+{
+  "domains": {
+    "procurement": {
+      "domain": "procurement",
+      "release_id": "procurement_v1",
+      "case_count": 12,
+      "seeds": 3,
+      "writer_targets": 5,
+      "executor_targets": 2,
+      "conditions": 4,
+      "authorized_trials_per_writer_condition": 72,
+      "selected_writer_routes": 15,
+      "ordinary_trials_per_writer_route": 576,
+      "selected_ordinary_trials": 8640,
+      "raw_trial_mode": "aggregate_only_from_public_git",
+      "status": "PASS"
+    },
+    "cybersecurity": {
+      "domain": "cybersecurity",
+      "release_id": "cybersecurity_v1",
+      "case_count": 16,
+      "seeds": 3,
+      "writer_targets": 5,
+      "executor_targets": 2,
+      "conditions": 4,
+      "authorized_trials_per_writer_condition": 128,
+      "selected_writer_routes": 15,
+      "ordinary_trials_per_writer_route": 1024,
+      "selected_ordinary_trials": 15360,
+      "raw_trial_mode": "aggregate_only_from_public_git",
+      "status": "PASS"
+    },
+    "finance": {
+      "domain": "finance",
+      "release_id": "finance_redesign_v1",
+      "case_count": 8,
+      "seeds": 3,
+      "writer_targets": 5,
+      "executor_targets": 2,
+      "conditions": 4,
+      "authorized_trials_per_writer_condition": 64,
+      "selected_writer_routes": 15,
+      "ordinary_trials_per_writer_route": 512,
+      "selected_ordinary_trials": 7680,
+      "raw_trial_mode": "aggregate_only_from_public_git",
+      "status": "PASS"
+    }
+  },
+  "total_selected_ordinary_trials": 31680
+}
