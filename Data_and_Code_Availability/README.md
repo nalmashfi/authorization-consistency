@@ -1,21 +1,27 @@
 # Data and Code Availability
 
-*A Mathematical Model for Authorization Consistency in Persistent Multiagent Artificial Intelligence Systems*
+*A Mathematical Model for Authorization Consistency in Persistent Multiagent Artificial Intelligence Systems*  
+Nabil Almashfi
 
-For the evaluation of authorization consistency, this repository provides runtime measurements, external benchmark records, and an audit of completed calls in selected AgentDojo trajectories. Alongside the formal model, the [supplements](../Supplementary_Materials/README.md) give the results of the internal experiments used to assess authorization consistency. The core algorithms appear in pseudocode. The executable core implementation and the original experiment scripts are unavailable here. To identify the records behind each part of the evaluation, the table describes the contents of the three directories as follows.
+For the runtime evaluation, S7 provides measurements by graph size, operation, and concurrency level in the configurations reported in the manuscript. For the external benchmarks, S8 documents the registered design and the evidence mappings, while S9 records decisions on individual AgentDojo calls. The replay uses previously recorded calls. To locate the source of a manuscript value, the correspondence between results and files is as follows.
 
-| Records | Available data and code | Scope |
+| Manuscript result | Archived files | Evidence supplied |
 | --- | --- | --- |
-| [S7 runtime](S7_runtime/) | Timing summaries, fitted values, and measurements by concurrency level | Each timing summary describes a configuration. The individual timing observations are unavailable. |
-| [S8 external benchmarks](S8_external_validation/) | Registered design, benchmark mapping code, authorization policy, offline checks, and independent AgentDojo scores | The counts establish the size of the registered design. The repository omits the raw EAL-Bench trials and frozen memories. |
-| [S9 AgentDojo audit](S9_agentdojo_audit/) | Case index, authorization decisions for individual completed calls, and replay summaries | The decision counts can be checked against the recorded support labels. To reassess a label, a reader needs the original task and the arguments of the call. |
+| Table 10 | [Nested timing measurements](S7_runtime/table10_nested.csv) | Summary of paired support-resolution and complete-path timings by graph size |
+| Table 11 and concurrent execution | [Operation timings](S7_runtime/table11_runtime.csv), [concurrent timings](S7_runtime/concurrency_runtime.csv), [runtime summary](S7_runtime/runtime_v3_summary.json) | Latencies by operation, throughput by concurrency level, measurement environment, and memory fit |
+| Table 12 | [EAL-Bench design](S8_external_validation/eal_public_design_snapshot.json), [offline coverage counts](S8_external_validation/eal_preflight_report.json) | Registered trial counts by domain. Computing a protected-path execution rate would require case-level evidence of effects. |
+| External benchmark mappings | [S8 file index](../Supplementary_Materials/S8.md#s86-supplied-machine-readable-files), [mapping code and policy](S8_external_validation/) | Evidence schema, tool policy, adapters, and offline checks for the external benchmarks |
+| Independent AgentDojo evaluation | [Suite-level scores](S8_external_validation/independent_agentdojo_full_benchmark_context.csv), [combined scores](S8_external_validation/independent_agentdojo_context.json) | Native utility and security scores from a separate evaluation whose agents ran without the proposed authorization gate |
+| Table 13 | [Trajectory index](S9_agentdojo_audit/agentdojo_stratified_case_index.json), [action audit](S9_agentdojo_audit/agentdojo_stratified_action_audit.csv), [replay summary](S9_agentdojo_audit/agentdojo_stratified_replay_results.json) | Support labels and counterfactual gate decisions for 21 completed calls in 13 selected trajectories. The index omits the original call arguments. |
 
-For the internal experiments, S3 through S6 report the results of formal validation, controlled comparisons, lifecycle tests, stochastic validation, and risk treatment. The repository omits the individual case logs, the trace vectors for each setting, the risk predictions for each case, and the exact classifier hyperparameters. In S8, the EAL-Bench and Agent Security Bench adapters require a base module absent from the source release. Each benchmark project sets the terms for access to its materials.
+## Verify the archived results
 
-## Check the reported values
-
-To verify selected manuscript results, the [verification script](verify_reported_results.py) reads the archived records offline using the Python 3 standard library. First, the script compares the median latencies in the S7 timing files with the values reported in Tables 10 and 11. Next, it checks the counts in Table 14 against the registered S8 design. Finally, it compares the S9 case index with the action audit, then checks the counterfactual decisions against Table 16. From the repository root, the command is as follows.
+The verification script uses only the Python 3 standard library. For Tables 10 and 11, the script checks the graph sizes and median latencies in every row against the archived timing files. For Table 12, it checks the EAL-Bench counts for each domain against the registered design and verifies the combined trial count. For Table 13, it matches the trajectory index to the action audit and checks the replay totals against the archived summary. From the repository root, the command to run the offline checks against these archived files is as follows.
 
 ```sh
 python3 Data_and_Code_Availability/verify_reported_results.py
 ```
+
+## Scope of reproduction
+
+For the internal experiments, the release provides the reported summaries but omits individual formal, controlled, and lifecycle case logs, per-setting stochastic trace vectors, case-level risk predictions, and individual timing observations. The core algorithms appear as [pseudocode in S2](../Supplementary_Materials/S2.md). For a new experimental run, the executable core implementation, original experiment and timing scripts, and exact Gradient Boosting hyperparameters are unavailable in this release. In S8, the EAL-Bench and Agent Security Bench adapters both import a base module that the release does not supply. For EAL-Bench, the original trial records and the frozen memories used to generate proposals are unavailable in the archive. Access to external benchmark data is subject to the distribution terms of the corresponding project.

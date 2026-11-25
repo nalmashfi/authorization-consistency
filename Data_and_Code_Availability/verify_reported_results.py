@@ -34,11 +34,22 @@ def check_runtime():
         (10000, 9987, "206.411", "426.303"), (50000, 49947, "1063.372", "2133.155"),
     ])
     measurements = csv_rows(folder / "table11_runtime.csv")
-    for name, expected in [("Atomic reservation", "0.240"), ("Protected commit", "0.220"),
-                           ("Reservation + protected commit", "0.471")]:
-        values = [format(Decimal(r["median_us"]), ".3f") for r in measurements if r["operation"] == name]
-        check(f"Table 11 {name}", values, [expected])
-    print("S7  Four graph sizes and three protected-operation medians match Tables 10 and 11.")
+    medians = Counter(
+        (row["operation"], row["configuration"], format(Decimal(row["median_us"]), ".3f"))
+        for row in measurements
+    )
+    check("Table 11 configurations and medians", medians, Counter([
+        ("Memory revalidation", "r_m=1", "0.180"),
+        ("Memory revalidation", "r_m=8", "0.521"),
+        ("Memory revalidation", "r_m=32", "1.642"),
+        ("Memory revalidation", "r_m=128", "6.129"),
+        ("Memory revalidation", "r_m=512", "24.136"),
+        ("Memory revalidation", "r_m=2048", "96.125"),
+        ("Atomic reservation", "single operation", "0.240"),
+        ("Protected commit", "single operation", "0.220"),
+        ("Reservation + protected commit", "single operation", "0.471"),
+    ]))
+    print("S7  The graph sizes and median latencies match all rows in Tables 10 and 11.")
 
 
 def check_coverage():
@@ -47,7 +58,7 @@ def check_coverage():
     domains = report["domains"]
     fields = ("case_count", "authorized_trials_per_writer_condition", "selected_ordinary_trials")
     coverage = {name: tuple(row[k] for k in fields) for name, row in domains.items()}
-    check("Table 14 coverage by domain", coverage, {
+    check("Table 12 coverage by domain", coverage, {
         "procurement": (12, 72, 8640), "cybersecurity": (16, 128, 15360), "finance": (8, 64, 7680),
     })
     for name, row in domains.items():
@@ -55,7 +66,7 @@ def check_coverage():
         check(f"{name} design enumeration", enumerated, row["selected_ordinary_trials"])
     total = sum(row["selected_ordinary_trials"] for row in domains.values())
     check("EAL-Bench design total", report["total_selected_ordinary_trials"], total)
-    print("S8  Table 14 matches 36 cases and 31,680 selected ordinary trials in the registered design.")
+    print("S8  Table 12 matches 36 cases and 31,680 selected ordinary trials in the registered design.")
 
 
 def check_replay():
@@ -74,7 +85,7 @@ def check_replay():
                            r["native_security"], r["tool"], r["supported"]) for r in actions)
     check("Calls in case index and action audit", audit_calls, case_calls)
     decisions = Counter((r["suite"], r["supported"], r["counterfactual_gate_permitted"]) for r in actions)
-    check("Table 16 archived counterfactual outcomes", decisions, {
+    check("Table 13 archived counterfactual outcomes", decisions, {
         ("banking", "False", "False"): 13, ("travel", "False", "False"): 2, ("travel", "True", "True"): 3,
         ("workspace", "False", "False"): 2, ("workspace", "True", "True"): 1,
     })
